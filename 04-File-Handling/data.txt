@@ -1,0 +1,2 @@
+FileChannel can be faster than
+Standard I/O if you're dealing with large files.
