@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:controller="application.RegisterController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="654.0" style="-fx-background-color: #f5e6e6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="248.0" layoutY="35.0" text="Register Form">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="93.0" prefHeight="25.0" prefWidth="80.0" text="Username" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_username" layoutX="288.0" layoutY="93.0" prefHeight="25.0" prefWidth="236.0" promptText="Enter username" />
+      <Label layoutX="146.0" layoutY="140.0" prefHeight="25.0" prefWidth="80.0" text="Password">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txt_password" layoutX="288.0" layoutY="140.0" prefHeight="25.0" prefWidth="236.0" promptText="Enter Password" />
+      <Label layoutX="146.0" layoutY="188.0" prefHeight="25.0" prefWidth="80.0" text="Birthday">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="txt_dob" layoutX="288.0" layoutY="188.0" prefHeight="25.0" prefWidth="236.0" promptText="Choose Birthday" />
+      <Label layoutX="146.0" layoutY="240.0" prefHeight="25.0" prefWidth="80.0" text="City">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbo_city" layoutX="287.0" layoutY="240.0" prefHeight="25.0" prefWidth="236.0" promptText="Choose City" />
+      <Label layoutX="146.0" layoutY="286.0" prefHeight="25.0" prefWidth="80.0" text="Skillset">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="chk_java" layoutX="288.0" layoutY="288.0" mnemonicParsing="false" text="Java">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="chk_php" layoutX="362.0" layoutY="289.0" mnemonicParsing="false" text="PHP">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="chk_js" layoutX="433.0" layoutY="289.0" mnemonicParsing="false" text="JavaScript">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <Label layoutX="146.0" layoutY="418.0" prefHeight="25.0" prefWidth="80.0" text="Other">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="331.0" prefHeight="25.0" prefWidth="80.0" text="Gender">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <RadioButton layoutX="287.0" layoutY="335.0" mnemonicParsing="false" selected="true" text="Male">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="ratio_group" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="388.0" layoutY="335.0" mnemonicParsing="false" text="Female" toggleGroup="$ratio_group">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Button layoutX="292.0" layoutY="527.0" mnemonicParsing="false" onAction="#btn_register_click" prefHeight="39.0" prefWidth="87.0" text="Register" textFill="#1500ff">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextArea fx:id="txt_area" layoutX="287.0" layoutY="382.0" prefHeight="96.0" prefWidth="236.0" promptText="Other Information" />
+      <Button layoutX="437.0" layoutY="527.0" mnemonicParsing="false" onAction="#btn_login_click" prefHeight="39.0" prefWidth="80.0" text="LogIn">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
