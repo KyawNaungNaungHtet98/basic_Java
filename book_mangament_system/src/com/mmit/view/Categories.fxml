@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="671.0" style="-fx-background-color: #cafad8;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmit.controller.CategoryController">
+   <children>
+      <TableView fx:id="tbl_category" layoutX="20.0" layoutY="14.0" prefHeight="316.0" prefWidth="632.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="col_name" prefWidth="222.0" text="Name" />
+            <TableColumn fx:id="col_created_at" minWidth="0.0" prefWidth="149.0" text="Created_at" />
+            <TableColumn fx:id="col_updated_at" prefWidth="187.0" text="Updated_at" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txt_name" alignment="CENTER" layoutX="56.0" layoutY="361.0" prefHeight="35.0" prefWidth="283.0" promptText="Category name" />
+      <Button alignment="CENTER" layoutX="59.0" layoutY="449.0" mnemonicParsing="false" onAction="#btn_add_click" prefHeight="25.0" prefWidth="105.0" text="Add" textFill="#4f7dc4">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="233.0" layoutY="449.0" mnemonicParsing="false" onAction="#btn_update_click" prefHeight="35.0" prefWidth="105.0" text="Update" textFill="#4f7dc4">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button alignment="CENTER" layoutX="543.0" layoutY="423.0" mnemonicParsing="false" onAction="#btn_delete_click" prefHeight="25.0" prefWidth="105.0" text="Delete" textFill="#ee0707">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button alignment="CENTER" layoutX="543.0" layoutY="494.0" mnemonicParsing="false" onAction="#btn_back_click" prefHeight="25.0" prefWidth="105.0" text="Back" textFill="#ee0707">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
