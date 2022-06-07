@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:controller="com.mmit.controller.BookSearchController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="744.0" style="-fx-background-color: #76f5cf;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="txt_category" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="162.0" promptText="Category" />
+      <TextField fx:id="txt_author" alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="25.0" prefWidth="174.0" promptText="Author" />
+      <DatePicker fx:id="txt_publish" layoutX="398.0" layoutY="14.0" promptText="Publish Date" />
+      <Button layoutX="592.0" layoutY="12.0" mnemonicParsing="false" onAction="#btn_search_click" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #8376f5;" text="Search" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tbl_book" layoutX="3.0" layoutY="90.0" prefHeight="420.0" prefWidth="744.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="64.0" text="Id" />
+          <TableColumn fx:id="col_title" prefWidth="114.0" text="Title" />
+            <TableColumn fx:id="col_category" prefWidth="107.0" text="Category" />
+            <TableColumn fx:id="col_author" prefWidth="100.0" text="Author" />
+            <TableColumn fx:id="col_price" prefWidth="106.0" text="Price" />
+            <TableColumn fx:id="col_publish" prefWidth="98.0" text="Publish Date" />
+            <TableColumn fx:id="col_created_by" prefWidth="170.0" text="Created_by" />
+        </columns>
+      </TableView>
+      <Button layoutX="592.0" layoutY="556.0" mnemonicParsing="false" onAction="#btn_back_click" prefHeight="25.0" prefWidth="138.0" text="Back" textFill="#e40000">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -10,21 +10,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="685.0" style="-fx-background-color: #7ff5d4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.mmit.controller.AuthorsController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="685.0" style="-fx-background-color: #7ff5d4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane layoutX="20.0" layoutY="14.0" prefHeight="291.0" prefWidth="651.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="651.0">
                <children>
-                  <TableView layoutX="-3.0" prefHeight="291.0" prefWidth="645.0">
+                  <TableView fx:id="tbl_author" layoutX="-3.0" prefHeight="291.0" prefWidth="645.0">
                     <columns>
-                      <TableColumn prefWidth="55.0" text="Id" />
-                      <TableColumn prefWidth="129.0" text="Name" />
-                        <TableColumn prefWidth="108.0" text="City" />
-                        <TableColumn prefWidth="128.0" text="Birthday" />
-                        <TableColumn prefWidth="99.0" text="Created_at" />
-                        <TableColumn prefWidth="124.0" text="Updated_at" />
+                      <TableColumn fx:id="col_id" prefWidth="55.0" text="Id" />
+                      <TableColumn fx:id="col_name" prefWidth="129.0" text="Name" />
+                        <TableColumn fx:id="col_city" prefWidth="108.0" text="City" />
+                        <TableColumn fx:id="col_birthday" prefWidth="128.0" text="Birthday" />
+                        <TableColumn fx:id="col_created" prefWidth="99.0" text="Created_at" />
+                        <TableColumn fx:id="col_updated" prefWidth="124.0" text="Updated_at" />
                     </columns>
                   </TableView>
                </children>
@@ -36,35 +35,35 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="341.0" layoutY="340.0" prefHeight="27.0" prefWidth="179.0" promptText="Author name" />
+      <TextField fx:id="txt_name" layoutX="341.0" layoutY="340.0" prefHeight="27.0" prefWidth="179.0" promptText="Author name" />
       <Label layoutX="143.0" layoutY="395.0" prefHeight="27.0" prefWidth="112.0" text="Enter City">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="341.0" layoutY="395.0" prefHeight="27.0" prefWidth="179.0" promptText="Author City" />
+      <TextField fx:id="txt_city" layoutX="341.0" layoutY="395.0" prefHeight="27.0" prefWidth="179.0" promptText="Author City" />
       <Label layoutX="137.0" layoutY="448.0" text="Enter Birthday">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <DatePicker layoutX="341.0" layoutY="448.0" prefHeight="27.0" prefWidth="179.0" />
-      <Button layoutX="462.0" layoutY="514.0" mnemonicParsing="false" text="Delete" textFill="#ee0404">
+      <DatePicker fx:id="txt_birthday" layoutX="341.0" layoutY="448.0" prefHeight="27.0" prefWidth="179.0" />
+      <Button layoutX="462.0" layoutY="514.0" mnemonicParsing="false" onAction="#btn_delete_click" text="Delete" textFill="#ee0404">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="341.0" layoutY="509.0" mnemonicParsing="false" text="Update">
+      <Button layoutX="341.0" layoutY="509.0" mnemonicParsing="false" onAction="#btn_update_click" text="Update">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="241.0" layoutY="509.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="74.0" text="Add">
+      <Button layoutX="241.0" layoutY="509.0" mnemonicParsing="false" onAction="#btn_add_click" prefHeight="35.0" prefWidth="74.0" text="Add">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="607.0" layoutY="544.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" text="Back" textFill="#ee0404">
+      <Button layoutX="607.0" layoutY="544.0" mnemonicParsing="false" onAction="#btn_back_click" prefHeight="30.0" prefWidth="58.0" text="Back" textFill="#ee0404">
          <font>
             <Font size="14.0" />
          </font>

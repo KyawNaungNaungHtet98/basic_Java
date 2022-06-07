@@ -47,7 +47,7 @@ public class CategoryController implements Initializable{
 	void btn_add_click(ActionEvent event) {
 		String name = txt_name.getText();
 		
-		DatabaseService.save(name);
+		DatabaseService.saveCategory(name);
 		txt_name.setText(null);
 		loadCategories();
 	}
@@ -67,7 +67,7 @@ public class CategoryController implements Initializable{
 			Optional<ButtonType>  result = alert.showAndWait();
 			if(result.get() == ButtonType.OK) {
 				
-				DatabaseService.delete(category.getId());
+				DatabaseService.deleteCategory(category.getId());
 				txt_name.setText(null);
 				loadCategories();
 			}
@@ -80,7 +80,7 @@ public class CategoryController implements Initializable{
 		String name = txt_name.getText();
 		Category category = tbl_category.getSelectionModel().getSelectedItem();
 		category.setName(name);
-		DatabaseService.update(category);
+		DatabaseService.updateCategory(category);
 		txt_name.setText(null);
 		loadCategories();
 	}
