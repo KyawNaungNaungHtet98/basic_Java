@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:controller="application.controller.LoginController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="700.0" style="-fx-background-color: #88e3f7;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Separator layoutX="-2.0" layoutY="123.0" prefHeight="0.0" prefWidth="700.0" style="-fx-background-color: #3f484a;" />
+      <Label layoutX="179.0" layoutY="37.0" prefHeight="61.0" prefWidth="171.0" text="Login">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" layoutX="588.0" layoutY="132.0" mnemonicParsing="false" onAction="#btn_register_click" prefHeight="46.0" prefWidth="98.0" style="-fx-background-color: #88e3f7; -fx-border-color: #000000;" text="Register" AnchorPane.bottomAnchor="452.0" AnchorPane.leftAnchor="588.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="132.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label alignment="CENTER" layoutX="185.0" layoutY="225.0" prefHeight="46.0" prefWidth="159.0" text="Email :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="185.0" layoutY="315.0" prefHeight="46.0" prefWidth="159.0" text="Password : ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_email" alignment="CENTER" layoutX="350.0" layoutY="236.0" prefHeight="30.0" prefWidth="171.0" promptText="email@gmail.com" />
+      <PasswordField fx:id="txt_password" alignment="CENTER" layoutX="350.0" layoutY="323.0" prefHeight="30.0" prefWidth="171.0" promptText="Password" />
+      <Button alignment="CENTER" layoutX="423.0" layoutY="397.0" mnemonicParsing="false" onAction="#btn_login_click" prefHeight="30.0" prefWidth="98.0" text="Log in">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="588.0" layoutY="581.0" mnemonicParsing="false" onAction="#btn_exit_click" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #88e3f7;" text="Exit" textFill="RED">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
