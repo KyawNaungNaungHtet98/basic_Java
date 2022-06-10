@@ -68,4 +68,15 @@ public class Book {
 		this.created_by = created_by;
 	}
 	
+	public String getAuthorName() {
+		return this.author.getName();
+	}
+	
+	public String getCategoryName() {
+		return this.category.getName();
+	}
+	
+	public String getUserName() {
+		return this.created_by.getName();
+	}
 }

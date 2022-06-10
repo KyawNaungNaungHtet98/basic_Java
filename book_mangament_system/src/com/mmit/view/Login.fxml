@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:controller="com.mmit.controller.LoginController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="1.0" prefHeight="117.0" prefWidth="687.0" style="-fx-background-color: #93f5d9;">
+         <children>
+            <Label alignment="CENTER_RIGHT" layoutX="155.0" layoutY="29.0" prefHeight="53.0" prefWidth="189.0" text="Login">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Separator layoutX="110.0" layoutY="2.0" orientation="VERTICAL" prefHeight="117.0" prefWidth="5.0" style="-fx-background-color: #000000;" />
+         </children>
+      </Pane>
+      <Separator layoutY="113.0" prefHeight="8.0" prefWidth="687.0" style="-fx-background-color: #000000;" />
+      <Label layoutX="188.0" layoutY="243.0" prefHeight="28.0" prefWidth="134.0" text="Email">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_email" layoutX="344.0" layoutY="245.0" prefHeight="25.0" prefWidth="176.0" promptText="Enter Email" />
+      <Label layoutX="188.0" layoutY="320.0" prefHeight="28.0" prefWidth="134.0" text="Password">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txt_password" layoutX="344.0" layoutY="322.0" prefHeight="25.0" prefWidth="176.0" promptText="Enter Password" />
+      <Button layoutX="369.0" layoutY="382.0" mnemonicParsing="false" onAction="#btn_login_click" prefHeight="28.0" prefWidth="63.0" text="Login" textFill="#001ee4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="457.0" layoutY="382.0" mnemonicParsing="false" onAction="#btn_clear_click" prefHeight="28.0" prefWidth="63.0" text="Clear" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="610.0" layoutY="551.0" mnemonicParsing="false" onAction="#btn_exit_click" prefHeight="30.0" prefWidth="63.0" text="Exit" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

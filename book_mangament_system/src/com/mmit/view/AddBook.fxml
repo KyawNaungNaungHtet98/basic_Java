@@ -9,54 +9,67 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="760.0" style="-fx-background-color: #95eddd;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.mmit.controller.BookAddController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="673.0" style="-fx-background-color: #7bedd4;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="12.0" layoutY="14.0" prefHeight="89.0" prefWidth="737.0" style="-fx-background-color: #8376f5;">
+      <Pane layoutY="14.0" prefHeight="75.0" prefWidth="673.0" style="-fx-background-color: #7b81ed;">
          <children>
-            <Label alignment="CENTER" layoutX="237.0" layoutY="4.0" prefHeight="81.0" prefWidth="263.0" text="Add New Book" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="260.0" layoutY="23.0" prefHeight="17.0" prefWidth="153.0" text="Add New Book">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Label layoutX="204.0" layoutY="172.0" prefHeight="23.0" prefWidth="133.0" text="Book Code">
+      <Label layoutX="159.0" layoutY="132.0" prefHeight="30.0" prefWidth="138.0" text="Book Code">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="368.0" layoutY="172.0" prefHeight="25.0" prefWidth="174.0" promptText="Code" />
-      <Label layoutX="204.0" layoutY="219.0" prefHeight="23.0" prefWidth="133.0" text="Book Title">
+      <Label layoutX="159.0" layoutY="179.0" prefHeight="30.0" prefWidth="138.0" text="Book Title">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="369.0" layoutY="219.0" prefHeight="25.0" prefWidth="174.0" promptText="Title" />
-      <Label layoutX="204.0" layoutY="274.0" prefHeight="23.0" prefWidth="133.0" text="Book Price">
+      <Label layoutX="159.0" layoutY="234.0" prefHeight="30.0" prefWidth="138.0" text="Book Price">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="368.0" layoutY="274.0" prefHeight="25.0" prefWidth="174.0" promptText="Price" />
-      <Label layoutX="204.0" layoutY="389.0" prefHeight="23.0" prefWidth="133.0" text="Book Author">
+      <Label layoutX="159.0" layoutY="291.0" prefHeight="30.0" prefWidth="138.0" text="Book publish Date">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox layoutX="370.0" layoutY="389.0" prefHeight="25.0" prefWidth="174.0" promptText="Choose Author" />
-      <Label layoutX="204.0" layoutY="439.0" prefHeight="23.0" prefWidth="133.0" text="Book Category">
+      <Label layoutX="159.0" layoutY="347.0" prefHeight="30.0" prefWidth="138.0" text="Book Author">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox layoutX="368.0" layoutY="439.0" prefHeight="25.0" prefWidth="174.0" promptText="Choose Category" />
-      <Label layoutX="204.0" layoutY="332.0" prefHeight="23.0" prefWidth="133.0" text="Book Publish date">
+      <Label layoutX="159.0" layoutY="402.0" prefHeight="30.0" prefWidth="138.0" text="Book Category">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <DatePicker layoutX="369.0" layoutY="332.0" promptText="Publish Date" />
-      <Button layoutX="326.0" layoutY="494.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="88.0" text="Save" />
+      <TextField fx:id="txt_code" alignment="CENTER" layoutX="331.0" layoutY="130.0" prefHeight="30.0" prefWidth="204.0" promptText="Code">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt_title" alignment="CENTER" layoutX="331.0" layoutY="179.0" prefHeight="30.0" prefWidth="204.0" promptText="Title">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt_price" alignment="CENTER" layoutX="331.0" layoutY="234.0" prefHeight="30.0" prefWidth="204.0" promptText="Price">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="txt_publish" layoutX="331.0" layoutY="291.0" prefHeight="30.0" prefWidth="204.0" promptText="Publish Date" />
+      <ComboBox fx:id="cbo_author" layoutX="331.0" layoutY="345.0" prefHeight="30.0" prefWidth="204.0" promptText="Choose Author" />
+      <ComboBox fx:id="cbo_category" layoutX="331.0" layoutY="402.0" prefHeight="30.0" prefWidth="204.0" promptText="Choose Category" />
+      <Button layoutX="331.0" layoutY="457.0" mnemonicParsing="false" onAction="#btn_save_click" prefHeight="30.0" prefWidth="85.0" text="Save" />
+      <Button layoutX="450.0" layoutY="457.0" mnemonicParsing="false" onAction="#btn_reset_click" prefHeight="30.0" prefWidth="85.0" text="Reset" textFill="RED" />
+      <Button layoutX="600.0" layoutY="538.0" mnemonicParsing="false" onAction="#btn_back_click" prefHeight="30.0" prefWidth="59.0" text="Back" textFill="RED" />
    </children>
 </AnchorPane>

@@ -105,7 +105,7 @@ public class CategoryController implements Initializable{
 	}
 
 	private void loadCategories() {
-		categoryList = DatabaseService.viewAll();
+		categoryList = DatabaseService.findAllCategory();
 		tbl_category.setItems(FXCollections.observableArrayList(categoryList));
 		
 	}
