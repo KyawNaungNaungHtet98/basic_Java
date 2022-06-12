@@ -3,9 +3,10 @@ package application.model.service;
 public class Book {
 	private int code;
 	private String title;
-	private int category_id;
-	private int author_id;
+	private Category category;
+	private Author author;
 	private int available;
+	private Librian user;
 	public int getCode() {
 		return code;
 	}
@@ -18,17 +19,25 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getCategory_id() {
-		return category_id;
+	
+	
+	public Category getCategory() {
+		return category;
 	}
-	public void setCategory_id(int category_id) {
-		this.category_id = category_id;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-	public int getAuthor_id() {
-		return author_id;
+	public Author getAuthor() {
+		return author;
 	}
-	public void setAuthor_id(int author_id) {
-		this.author_id = author_id;
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+	public Librian getUser() {
+		return user;
+	}
+	public void setUser(Librian user) {
+		this.user = user;
 	}
 	public int getAvailable() {
 		return available;
@@ -37,5 +46,13 @@ public class Book {
 		this.available = available;
 	}
 	
-	
+	public String getCategoryName() {
+		return this.category.getName();
+	}
+	public String getAuthorName() {
+		return this.author.getName();
+	}
+	public String getUserName() {
+		return this.user.getUsername();
+	}
 }

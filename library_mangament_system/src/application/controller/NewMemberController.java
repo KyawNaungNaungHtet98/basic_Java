@@ -31,7 +31,7 @@ public class NewMemberController implements Initializable{
 
 	    @FXML
 	    void btn_back_click(ActionEvent event) throws IOException {
-	    	Main.change_scene("view/Main.fxml");
+	    	Main.change_scene("view/Member.fxml");
 	    }
 
 	    @FXML
@@ -57,7 +57,7 @@ public class NewMemberController implements Initializable{
 	    		return;
 	    	}
 	    	DatabaseService.registerMember(name,roll,year,academic);
-	    	Main.change_scene("view/Main.fxml");
+	    	Main.change_scene("view/Member.fxml");
 	    	
 	    	
 	    }

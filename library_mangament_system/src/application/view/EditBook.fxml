@@ -1,8 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane fx:controller="application.controller.EditBookController" prefHeight="630.0" prefWidth="700.0" style="-fx-background-color: #88e3f7;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tbl_book" prefHeight="200.0" prefWidth="700.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="53.0" text="id" />
+          <TableColumn fx:id="col_title" prefWidth="152.0" text="Title" />
+            <TableColumn fx:id="col_category" prefWidth="145.0" text="Category" />
+            <TableColumn fx:id="col_author" prefWidth="153.0" text="Author" />
+            <TableColumn fx:id="col_avaliable" prefWidth="88.0" text="Avaliable" />
+            <TableColumn fx:id="col_created_by" prefWidth="108.0" text="Created_by" />
+        </columns>
+      </TableView>
+      <Separator layoutY="320.0" prefHeight="0.0" prefWidth="700.0" style="-fx-background-color: #000000;" />
+      <Label layoutX="210.0" layoutY="341.0" text="Enter Title">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_book_title" layoutX="375.0" layoutY="341.0" prefHeight="25.0" prefWidth="170.0" promptText="Enter Book Name">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></TextField>
+      <Label layoutX="210.0" layoutY="390.0" text="Enter Category">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbo_category" layoutX="375.0" layoutY="390.0" prefHeight="25.0" prefWidth="170.0" promptText="Choose Category">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ComboBox>
+      <Label layoutX="210.0" layoutY="441.0" text="Enter Author">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbo_author" layoutX="375.0" layoutY="441.0" prefHeight="25.0" prefWidth="170.0" promptText="Choose Aithor">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ComboBox>
+      <TextField fx:id="txt_author" layoutX="14.0" layoutY="247.0" prefHeight="25.0" prefWidth="170.0" promptText="Enter author" />
+      <TextField fx:id="txt_category" layoutX="205.0" layoutY="247.0" prefHeight="25.0" prefWidth="170.0" promptText="Enter Category" />
+      <TextField fx:id="txt_title" layoutX="392.0" layoutY="247.0" prefHeight="25.0" prefWidth="170.0" promptText="Enter Title" />
+      <Button layoutX="615.0" layoutY="285.0" mnemonicParsing="false" onAction="#btn_search_click" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #88e3f7; -fx-border-color: #000000;" text="Search">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="375.0" layoutY="508.0" mnemonicParsing="false" onAction="#btn_add_click" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #88e3f7; -fx-border-color: #000000;" text="Add">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="615.0" layoutY="586.0" mnemonicParsing="false" onAction="#btn_back_click" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #88e3f7; -fx-border-color: #ff0000;" text="Back" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="474.0" layoutY="508.0" mnemonicParsing="false" onAction="#btn_update_click" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #88e3f7; -fx-border-color: #ff0000;" text="Update" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="562.0" layoutY="508.0" mnemonicParsing="false" onAction="#btn_delete_click" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #88e3f7; -fx-border-color: #ff0000;" text="Delete" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
 </AnchorPane>
-
