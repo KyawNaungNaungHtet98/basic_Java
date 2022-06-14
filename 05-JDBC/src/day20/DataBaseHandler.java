@@ -47,22 +47,22 @@ public class DataBaseHandler {
 			//disable auto_commit
 			con.setAutoCommit(false);
 			//query
-			PreparedStatement pstm = con.prepareStatement(insert1);
-			pstm.setInt(1, emp1.getEmpId());
-			pstm.setString(2, emp1.getEmail());
-			pstm.setString(3, emp1.getPassword());
-			pstm.setString(4, emp1.getCity());
-			pstm.setDouble(5, emp1.getSalary());
-			pstm.setDate(6, Date.valueOf(emp1.getBirthday()));
-			pstm.executeUpdate();//for emp1
-			pstm= con.prepareStatement(insert2);
-			pstm.setInt(1, emp2.getEmpId());
-			pstm.setString(2, emp2.getEmail());
-			pstm.setString(3, emp2.getPassword());
-			pstm.setString(4, emp2.getCity());
-			pstm.setDouble(5, emp2.getSalary());
-			pstm.setDate(6, Date.valueOf(emp2.getBirthday()));
-			pstm.executeUpdate();//for emp2
+			PreparedStatement pstm1 = con.prepareStatement(insert1);
+			pstm1.setInt(1, emp1.getEmpId());
+			pstm1.setString(2, emp1.getEmail());
+			pstm1.setString(3, emp1.getPassword());
+			pstm1.setString(4, emp1.getCity());
+			pstm1.setDouble(5, emp1.getSalary());
+			pstm1.setDate(6, Date.valueOf(emp1.getBirthday()));
+			pstm1.executeUpdate();//for emp1
+			var pstm2= con.prepareStatement(insert2);
+			pstm2.setInt(1, emp2.getEmpId());
+			pstm2.setString(2, emp2.getEmail());
+			pstm2.setString(3, emp2.getPassword());
+			pstm2.setString(4, emp2.getCity());
+			pstm2.setDouble(5, emp2.getSalary());
+			pstm2.setDate(6, Date.valueOf(emp2.getBirthday()));
+			pstm2.executeUpdate();//for emp2
 			
 			//commit
 			con.commit();

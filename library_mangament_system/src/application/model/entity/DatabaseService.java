@@ -3,15 +3,18 @@ package application.model.entity;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.controller.LoginController;
 import application.model.service.Author;
 import application.model.service.Book;
 import application.model.service.Category;
 import application.model.service.Librian;
 import application.model.service.Members;
+import application.model.service.Transcation;
 
 public class DatabaseService {
 
@@ -193,8 +196,8 @@ public class DatabaseService {
 		return list;
 	}
 
-	private static LocalDate convertTime(String input) {
-		LocalDate time = LocalDate.parse(input);
+	private static LocalDate convertTime(String string) {
+		LocalDate time = LocalDate.parse(string);
 
 		return time;
 	}
@@ -452,4 +455,306 @@ public class DatabaseService {
 		}
 		return false;
 	}
+	
+	public static List<Transcation> findAllborrowBook() {
+		List<Transcation> list = new ArrayList<>();
+		try (Connection con = MyConnection.getConnection()){
+			String query = "SELECT book.title, member.name,librian.username,transaction.*  FROM transaction , book , member ,librian WHERE transaction.member_id = member.id \r\n"
+					+ "AND transaction.book_id = book.code AND transaction.librian_id = librian.id";
+			var pstm = con.prepareStatement(query);
+			var rs = pstm.executeQuery();
+			while (rs.next()) {
+				Transcation t = new Transcation();
+				t.setId(rs.getInt("id"));
+				Members m = new Members();
+				m.setId(rs.getInt("member_id"));
+				m.setName(rs.getString("name"));
+				t.setMember(m);
+				Book b = new Book();
+				b.setCode(rs.getInt("book_id"));
+				b.setTitle(rs.getString("title"));
+				t.setBook(b);
+				Librian l = new Librian();
+				l.setId(rs.getInt("librian_id"));
+				l.setUsername(rs.getString("username"));
+				t.setLibrian(l);
+				t.setBorrow_date(convertTime(rs.getString("borrow_date")));
+				t.setDue_date(convertTime(rs.getString("due_date")));
+				list.add(t);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public static boolean borrowBook(String code, String member_id) throws SQLException {
+		if(checkBook(code) == false) {
+			return false;
+		}
+		
+		if(checkMember(member_id) == false) {
+			return false;
+		}
+		
+		Connection con = MyConnection.getConnection();
+		try {
+			
+			String query1 = "INSERT INTO transaction(member_id,book_id,borrow_date,due_date,fees,librian_id) VALUES (?,?,?,?,?,?)";
+			String query2 = "UPDATE book SET available = ? WHERE code = ?";
+			con.setAutoCommit(false);
+			var pstm = con.prepareStatement(query1);
+			pstm.setInt(1, Integer.parseInt(member_id));
+			pstm.setInt(2, Integer.parseInt(code));
+			pstm.setDate(3, Date.valueOf(LocalDate.now()));
+			pstm.setDate(4, Date.valueOf(LocalDate.now().plusDays(7)));
+			pstm.setInt(5, 0);
+			pstm.setInt(6, LoginController.login_user.getId());
+			pstm.executeUpdate();
+			pstm = con.prepareStatement(query2);
+			pstm.setInt(1, 1);
+			pstm.setInt(2, Integer.parseInt(code));
+			pstm.executeUpdate();
+			con.commit();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			con.rollback();
+			
+		} finally {
+			if (con != null) {
+			con.close();
+			}
+		}
+		return false;
+		
+	}
+
+	private static boolean checkMember(String member_id) {
+		List<Transcation> list = new ArrayList<>();
+		try (Connection con = MyConnection.getConnection()){
+			String query = "SELECT book.title, member.name,librian.username,transaction.*  FROM transaction , book , member ,librian WHERE transaction.member_id = member.id \r\n"
+					+ "AND transaction.book_id = book.code AND transaction.librian_id = librian.id AND member_id = ?";
+			var pstm = con.prepareStatement(query);
+			pstm.setInt(1, Integer.parseInt(member_id));
+			var rs =pstm.executeQuery();
+			while(rs.next()) {
+			Transcation t = new Transcation();
+			t.setId(rs.getInt("id"));
+			Members m = new Members();
+			m.setId(rs.getInt("member_id"));
+			m.setName(rs.getString("name"));
+			t.setMember(m);
+			Book b = new Book();
+			b.setCode(rs.getInt("book_id"));
+			b.setTitle(rs.getString("title"));
+			t.setBook(b);
+			Librian l = new Librian();
+			l.setId(rs.getInt("librian_id"));
+			l.setUsername(rs.getString("username"));
+			t.setLibrian(l);
+			t.setBorrow_date(convertTime(rs.getString("borrow_date")));
+			t.setDue_date(convertTime(rs.getString("due_date")));
+			list.add(t);
+		}
+		if (list.size() > 3) {
+			System.out.println("chech size");
+			return false;
+		}
+		
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+
+	private static boolean checkBook(String code) {
+		List<Book> list = new ArrayList<>();
+		try (Connection con = MyConnection.getConnection()){
+			String query = "SELECT * FROM book where code = ?";
+			var pstm = con.prepareStatement(query);
+			pstm.setInt(1, Integer.parseInt(code));
+			var rs = pstm.executeQuery();
+			while(rs.next()) {
+				Book b = new Book();
+				b.setCode(rs.getInt("code"));
+				b.setTitle(rs.getString("title"));
+				Librian l = new Librian();
+				l.setId(rs.getInt("created_by"));
+				b.setUser(l);
+				Author auth = new Author();
+				auth.setId(rs.getInt("author_id"));
+
+				b.setAuthor(auth);
+
+				Category cate = new Category();
+				cate.setId(rs.getInt("category_id"));
+				b.setCategory(cate);
+				b.setAvailable(rs.getInt("available"));
+				list.add(b);
+				
+			}
+			List<Integer> available = list.stream().map(a->a.getAvailable()).toList();
+			
+			if(available.contains(0)) {
+					return true;
+			} 
+			if(available.contains(1)) {
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+
+	public static List<Transcation> findReturnBook() {
+		List<Transcation> list = new ArrayList<>();
+		try (Connection con = MyConnection.getConnection()){
+			String query = "SELECT book.title, member.name,librian.username,transaction.*  FROM transaction , book , member ,librian WHERE transaction.member_id = member.id \r\n"
+					+ "AND transaction.book_id = book.code AND transaction.librian_id = librian.id";
+			var pstm = con.prepareStatement(query);
+			var rs = pstm.executeQuery();
+			while (rs.next()) {
+				Transcation t = new Transcation();
+				t.setId(rs.getInt("id"));
+				Members m = new Members();
+				m.setId(rs.getInt("member_id"));
+				m.setName(rs.getString("name"));
+				t.setMember(m);
+				Book b = new Book();
+				b.setCode(rs.getInt("book_id"));
+				b.setTitle(rs.getString("title"));
+				t.setBook(b);
+				Librian l = new Librian();
+				l.setId(rs.getInt("librian_id"));
+				l.setUsername(rs.getString("username"));
+				t.setLibrian(l);
+				t.setBorrow_date(convertTime(rs.getString("borrow_date")));
+				t.setDue_date(convertTime(rs.getString("due_date")));
+				LocalDate date = LocalDate.now();
+				LocalDate borrow = convertTime(rs.getString("due_date"));
+				int num = date.compareTo(borrow);
+				t.setFees(num*50);
+				t.setReturn_date(LocalDate.now());
+				list.add(t);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public static boolean findReturnBook(Transcation return_book) throws SQLException {
+//		if(checkReturnDate(return_book) == false) {
+//			return false;
+//		}
+		
+		Connection con = MyConnection.getConnection();
+		try {
+			
+			String query1 = "DELETE FROM transaction WHERE id = ?";
+			String query2 = "UPDATE book SET available = ? WHERE code = ?";
+			con.setAutoCommit(false);
+			var pstm = con.prepareStatement(query1);
+			pstm.setInt(1, return_book.getId());
+			pstm.executeUpdate();
+			pstm = con.prepareStatement(query2);
+			pstm.setInt(1, 0);
+			pstm.setInt(2, return_book.getBook().getCode());
+			pstm.executeUpdate();
+			con.commit();
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			con.rollback();
+			
+		} finally {
+			if (con != null) {
+			con.close();
+			}
+		}
+		return false;
+		
+		
+	}
+
+//	private static boolean checkReturnDate(Transcation return_book) {
+//		try (var con = MyConnection.getConnection()){
+//			String query = "UPDATE transaction SET return_date = ?,fees = ? WHERE id = ? ";
+//			var pstm = con.prepareStatement(query);
+//			LocalDate date = LocalDate.now();
+//			LocalDate borrow = return_book.getDue_date();
+//			int num = date.compareTo(borrow);
+//			pstm.setDate(1, Date.valueOf(LocalDate.now()));
+//			pstm.setInt(2, num*500);
+//			pstm.setInt(3, return_book.getId());
+//			pstm.executeUpdate();
+//			return true;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return false;
+//		
+//		
+//	}
+
+	public static List<Transcation> searchReturnBook(String code, String id) {
+		List<Transcation> list = new ArrayList<>();
+		try (var con = MyConnection.getConnection()) {
+			String query = "SELECT book.title, member.name,librian.username,transaction.*  FROM transaction , book , member ,librian WHERE transaction.member_id = member.id \r\n"
+					+ "AND transaction.book_id = book.code AND transaction.librian_id = librian.id";
+			List<Object> params = new ArrayList<>();
+
+			if (!code.isEmpty()) {
+				query += " AND transaction.book_id LIKE ?";
+				params.add("%" + code + "%");
+			}
+			if (!id.isEmpty()) {
+				query += " AND transaction.member_id LIKE ?";
+				params.add("%" + id + "%");
+			}
+			PreparedStatement pstm = con.prepareStatement(query);
+			for (var i = 0; i < params.size(); i++) {
+				pstm.setObject((i + 1), params.get(i));
+			}
+
+			var rs = pstm.executeQuery();
+			while (rs.next()) {
+				Transcation t = new Transcation();
+				t.setId(rs.getInt("id"));
+				Members m = new Members();
+				m.setId(rs.getInt("member_id"));
+				m.setName(rs.getString("name"));
+				t.setMember(m);
+				Book b = new Book();
+				b.setCode(rs.getInt("book_id"));
+				b.setTitle(rs.getString("title"));
+				t.setBook(b);
+				Librian l = new Librian();
+				l.setId(rs.getInt("librian_id"));
+				l.setUsername(rs.getString("username"));
+				t.setLibrian(l);
+				t.setBorrow_date(convertTime(rs.getString("borrow_date")));
+				t.setDue_date(convertTime(rs.getString("due_date")));
+				LocalDate date = LocalDate.now();
+				LocalDate borrow = convertTime(rs.getString("due_date"));
+				int num = date.compareTo(borrow);
+				
+				t.setFees(num*50);
+				t.setReturn_date(LocalDate.now());
+				list.add(t);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
 }
